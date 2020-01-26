@@ -17,14 +17,14 @@
  :root {
     --dark: #2b2b2b;
     --medium: #303030;
-    --light: #464646;
+    --light: #707070;
     --bottomSpace: 128px;
     --scrollbarSize: 8px;
 }
 
 html, body {
     height: 100%;
-    background-color: var(--dark);
+    background-color: var(--dark) !important;
 }
 
 /* Scrollbar */
