@@ -37,10 +37,13 @@
 <script>
 
 function loadText (filename) {
-  
-    while (document.getElementById("myEditor").firstChild) {
-        document.getElementById("myEditor").removeChild(document.getElementById("myEditor").firstChild)
-    }
+    
+    var filenameWithoutDots = filename.replace(".", "-")
+
+    if (document.getElementById(filenameWithoutDots + "-tab")) {
+        document.getElementById(filenameWithoutDots + "-tab").click()
+        return
+    } 
 
     var content = "";
 
@@ -49,11 +52,11 @@ function loadText (filename) {
         if (this.readyState == 4 && this.status == 200) {
             content = this.responseText;
 
-                var myCodeMirror = CodeMirror(document.getElementById("myEditor"), {
+                var myCodeMirror = CodeMirror(document.getElementById(createNewTab(filename)), {
                     value: content,
                     lineNumbers: true,
                     theme: "darcula",
-                    mode:  "javascript" })
+                    mode:  "javascript" })    
         }
     };
     xhttp.open("GET", "./files/" + filename, true);

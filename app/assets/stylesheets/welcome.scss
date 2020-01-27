@@ -12,7 +12,7 @@
 
 #editor {
     background-color: #272727;
-    overflow-y: auto;
+    overflow-y: hidden;
     border:none !important;
 }
 
@@ -121,12 +121,8 @@ a:hover {
 
 // EDITOR ///////////////////////////////////////////////////////
 
-.card-body {
-    padding: 0 !important;
-}
-
-#myEditor {
-    height: 100%;
+.tab-content {
+    height: calc(100% - 48px);
 }
 
 .CodeMirror {
@@ -144,14 +140,14 @@ a:hover {
 }
 
 /* Tabs */
-.card-header {
+.nav-tabs {
     background-color: #474747 !important;
     height: 48px;
     margin-left: 48px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
     padding-top: 0px !important;
-    border: none;
+    border: none !important;
 }
 
 .card-header-tabs {

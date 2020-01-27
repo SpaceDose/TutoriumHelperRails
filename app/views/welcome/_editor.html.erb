@@ -1,20 +1,64 @@
 <div id="editor" class="card flex-fill">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                <a class="nav-link active d-flex justify-content-between" href="#">
-                    main.java
-					<button type="button" class="closeBtn">
-						<%= image_tag("close.svg") %>
-					</button>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">yikes.java</a>
-            </li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <div id="myEditor"></div>
+    <nav id="nav-tab" class="nav nav-tabs" role="tablist">
+    </nav>
+    <div id="nav-tabContent" class="tab-content">
     </div>
 </div>
+
+<script>
+
+    function closeTab (filename) {
+        console.log(filename)
+        document.getElementById(filename + "-tab").remove()
+        document.getElementById(filename + "").remove()
+    }
+
+    function createNewTab (filename) {
+        
+        var title = document.createElement("p")
+        title.setAttribute("style", "margin-top: 2px; font-size: 16px;")
+        title.innerHTML = filename
+
+        var filename = filename.replace(".", "-")
+
+        var close = document.createElement("button")
+        close.setAttribute("class", "closeBtn")
+        close.setAttribute("onClick", "closeTab('" + filename + "')")
+
+        var cross = document.createElement("img")
+        cross.setAttribute("src", "/assets/close.svg")
+        cross.setAttribute("style", "margin-bottom: 4px;")
+
+        close.appendChild(cross)
+
+        var link = document.createElement("a")
+        link.setAttribute("class", "nav-item nav-link d-flex justify-content-between")
+        link.setAttribute("id", filename + "-tab")
+        link.setAttribute("data-toggle", "tab")
+        link.setAttribute("href", "#" + filename)
+        link.setAttribute("role", "tab")
+        link.setAttribute("aria-controls", filename)
+        link.setAttribute("aria-selected", "false")
+        link.appendChild(title)
+
+        link.appendChild(close)
+
+        document.getElementById("nav-tab").appendChild(link);
+        
+        var card = document.createElement("div")
+        card.setAttribute("class", "tab-pane show active")
+        card.setAttribute("id", filename)
+        card.setAttribute("role", "tabpanel")
+        card.setAttribute("aria-labelledby", "nav-" + filename + "-tab")
+        card.setAttribute("style", "height: 100%;")
+
+        document.getElementById("nav-tabContent").appendChild(card);
+
+        link.click()
+
+        console.log(filename)
+
+        return filename
+    }
+
+</script>
