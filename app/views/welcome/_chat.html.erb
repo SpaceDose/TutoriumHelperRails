@@ -1,62 +1,102 @@
-<div id="chat">
-<div class="card">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                <a class="nav-link active d-flex justify-content-between" href="#">
-                    <div>
-                        <%= image_tag("chat_bubble.svg") %>
-                        Student #713
-                    </div>
-                    <button type="button" class="closeBtn">
-                        <%= image_tag("close.svg") %>
-                    </button>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Max Tu...</a>
-            </li>
-            <div class="vl"></div>
-            <li class="nav-item"></li>
-                <a class="nav-link" href="#">Cordul...</a>
-            </li>
+<div id="chat" class="d-flex flex-column">
+    <nav id="nav-tab" class="nav nav-tabs" role="tablist">
+        <% if @is_tutor %>
+        <a class="nav-link d-flex justify-content-between" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+            <p style="margin-top: 2px; font-size: 16px;">Student#12</p>
+            <button class="closeBtn"><img src="/assets/close.svg" style="margin-bottom: 4px;" /></button>
+        </a>
+        <a class="nav-link d-flex justify-content-between" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+            <p style="margin-top: 2px; font-size: 16px;">Group#92</p>
+            <button class="closeBtn"><img src="/assets/close.svg" style="margin-bottom: 4px;" /></button>
+        </a>
+        <% end %>
+        <a class="nav-link d-flex justify-content-between active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+            <p style="margin-top: 2px; font-size: 16px;">Tutor#4</p>
+            <button class="closeBtn"><img src="/assets/close.svg" style="margin-bottom: 4px;" /></button>
+        </a>
+    </nav>
+    
+    <div id="nav-tabContent" class="tab-content">
 
-            <div style="margin-right: 12px; margin-top: 8px;" class="d-flex ml-auto">
-                <button style="margin-right: 8px" type="button" class="btn btn-circle btn-sm d-flex justify-content-center" aria-pressed="true">
-                    <%= image_tag("call.svg") %>
-                </button> 
-                <button type="button" class="btn btn-circle btn-sm ml-auto d-flex justify-content-center" aria-pressed="true">
-                    <%= image_tag("add.svg") %>
-                </button>   
+        <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="d-flex flex-column">
+                <div class="chatMsg partnerMsg d-flex align-items-center justify-content-between">
+                    <p>this is quite a long testmessage</p>
+                    <div class="ts">12:43am</div>
+                </div>
+                <div class="chatMsg userMsg d-flex align-items-center justify-content-between">
+                    <p>this is quite a long answer</p>
+                    <div class="ts">12:46am</div>
+                </div>
+                <div class="chatMsg userMsg d-flex align-items-center justify-content-between">
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <div class="ts">12:46am</div>
+                </div>
             </div>
-        </ul>
+        </div>    
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="d-flex flex-column">
+                <div class="chatMsg partnerMsg d-flex align-items-center justify-content-between">
+                    <p>I hope one day my friends will start using legitimate sample data for testing purposes. :(</p>
+                    <div class="ts">13:37am</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade " id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="d-flex flex-column">
+                <div class="chatMsg userMsg d-flex align-items-center justify-content-between">
+                    <p>I need so much time to fix this "sample" lines...</p>
+                    <div class="ts">13:37am</div>
+                </div>
+                <div class="chatMsg partnerMsg d-flex align-items-center justify-content-between">
+                    <p>'Here was a bad word.'</p>
+                    <div class="ts">13:37am</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="card-body d-flex flex-column">
-        <div class="chat flex-grow-1 d-flex flex-column">
-            <div class="chatMsg partnerMsg d-flex align-items-center justify-content-between">
-                <p>this is a quite long testmessage</p> 
-                <div class="ts">12:43am</div>
-            </div>
-            <div class="chatMsg userMsg d-flex align-items-center justify-content-between">
-                <p>this is a quite long answer</p>
-                <div class="ts">12:46am</div>
-            </div>
-            <div class="chatMsg userMsg d-flex align-items-center justify-content-between">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                <div class="ts">12:46am</div>
-            </div>
-        </div>
-        
-        <div class="bottomBar d-flex align-items-center">
-            <button type="button" class="btn btn-circle btn-sm d-flex justify-content-center" aria-pressed="true">
-                <%= image_tag("emoticon.svg") %>
-            </button>
-            <input class="form-control"/>
-            <button type="button" class="btn btn-circle btn-sm d-flex justify-content-center" aria-pressed="true">
-                <%= image_tag("send.svg") %>
-            </button>
-        </div>
-    <div>
+    <div class="bottomBar d-flex align-items-center mt-auto">
+        <button type="button" class="btn btn-circle btn-sm d-flex justify-content-center" aria-pressed="true">
+            <%= image_tag("emoticon.svg") %>
+        </button>
+        <input id="chatinput" class="form-control"/>
+        <button type="button" class="btn btn-circle btn-sm d-flex justify-content-center" aria-pressed="true" onClick="sendMsg()">
+            <%= image_tag("send.svg") %>
+        </button>
+    </div>
 </div>
-</div>
+
+<script>
+
+function sendMsg() {
+    
+    var container
+    
+    if (document.getElementsByClassName("active")[3]) {
+        container = document.getElementsByClassName("active")[3].children[0]
+    } else {
+        container = document.getElementsByClassName("active")[1].children[0]
+    }
+    
+    var msg = document.createElement("p")
+    msg.innerHTML = document.getElementById("chatinput").value
+    
+    var ts = document.createElement("div")
+    ts.setAttribute("class", "ts")
+    ts.innerHTML = "18:26am"
+
+    var chatbubble = document.createElement("div")
+    chatbubble.setAttribute("class", "chatMsg userMsg d-flex align-items-center justify-content-between")
+
+    chatbubble.appendChild(msg)
+    chatbubble.appendChild(ts)
+    container.appendChild(chatbubble)
+    
+    document.getElementById("chatinput").value = ""
+}
+
+</script>
