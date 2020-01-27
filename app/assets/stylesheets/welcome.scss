@@ -2,6 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// LOGIN
+
+.wrapper {	
+    padding-top:20%;
+    height: 100%;
+	background-color: #242424;
+}
+
+.form-input{
+	margin-bottom: 12px;
+}
+
+.form-button {
+	margin-top: 16px;
+}
+
+.form-signin {
+    align:center;
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #303030;
+    border: 1px solid rgba(0,0,0,0.1);  
+}
+
+.form-signin-heading {
+    margin-bottom: 30px;
+}
+
+.form-control {
+    position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+		&:focus {
+			z-index: 2;
+		}
+}
+	
+input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 /* LAYOUT */
 #package_explorer {
     width: 350px;
