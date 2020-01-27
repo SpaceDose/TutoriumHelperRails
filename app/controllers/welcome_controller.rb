@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   
   def index
-    @files = Dir.entries("./public/files/") - [".", "..", ".keep"]
+    @files = Dir.entries("./public/files/") - [".", ".."]
   end
 
   def new_file
