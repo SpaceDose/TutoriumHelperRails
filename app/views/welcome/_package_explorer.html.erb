@@ -10,28 +10,16 @@
     <hr/>
 
     <div class="files flex-grow-1">
-        <ul class="list-group">
-            <a href="#" class="list-group-item d-flex align-items-center folder">
-                <%= image_tag("arrow_right.svg", class: "collapse_indicator") %>
-                <%= image_tag("folder_open.svg") %>
-                <p>Assignment 06</p>
-            </a>
-            <a href="#" class="list-group-item d-flex align-items-center file">
-                <%= image_tag("file.svg") %>
-                <p>main.java</p>
-            </a>
-            <a href="#" class="list-group-item d-flex align-items-center file">
-                <%= image_tag("file.svg") %>
-                <p>yikes.java</p>
-            </a>
-        </ul>
-        <ul class="list-group folder">
-            <a href="#" class="list-group-item d-flex align-items-center folder">
-                <%= image_tag("arrow_right.svg", class: "collapse_indicator") %>
-                <%= image_tag("folder_open.svg") %>
-                <p>Assignment 07</p>
-          </a>
-        </ul>
+        
+        <%= @files.each do |f| %>
+            <ul class="list-group">
+                <button onClick="loadText('<%= f %>')" class="list-group-item d-flex align-items-center folder file">
+                    <%= image_tag("file.svg") %>
+                    <%= content_tag(:p, f) %>
+                </button>
+            </ul>
+        <% end %>
+
     </div>
 
     <div class="title bottomtitle container d-flex align-items-center justify-content-center">
@@ -40,3 +28,36 @@
         <button type="button" class="btn finishBtn" aria-pressed="true">FINISH CURRENT</button>
     </div>
 </div>
+
+<script src="./codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="./codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="./codemirror/theme/darcula.css">
+<script src="./codemirror/mode/javascript/javascript.js"></script>
+
+<script>
+
+function loadText (filename) {
+  
+    while (document.getElementById("myEditor").firstChild) {
+        document.getElementById("myEditor").removeChild(document.getElementById("myEditor").firstChild)
+    }
+
+    var content = "";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            content = this.responseText;
+
+                var myCodeMirror = CodeMirror(document.getElementById("myEditor"), {
+                    value: content,
+                    lineNumbers: true,
+                    theme: "darcula",
+                    mode:  "javascript" })
+        }
+    };
+    xhttp.open("GET", "./files/" + filename, true);
+    xhttp.send();
+}
+
+</script>
