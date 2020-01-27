@@ -2,6 +2,13 @@ class WelcomeController < ApplicationController
   
   def index
     @files = Dir.entries("./public/files/") - [".", ".."]
+
+    @is_tutor = false
+
+    if params[:username] == "tutor"
+      @is_tutor = true
+    end
+    
   end
 
   def new_file
