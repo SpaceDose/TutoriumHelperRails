@@ -2,9 +2,11 @@
     <div class="title container d-flex align-items-center">
         <%= image_tag("folder_shared.svg") %>
         <p>Package Explorer</p>
-        <button type="button" class="btn btn-circle btn-sm ml-auto d-flex justify-content-center" aria-pressed="true">
+        
+        <button class="btn btn-circle btn-sm ml-auto d-flex justify-content-center" type="button" data-toggle="modal" data-target="#exampleModal">
             <%= image_tag("add.svg") %>
         </button>
+
     </div>
 
     <hr/>
@@ -26,6 +28,27 @@
         <%= image_tag("queue.svg") %>
         <p>16 students in queue</p>
         <button type="button" class="btn finishBtn" aria-pressed="true">FINISH CURRENT</button>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">TestModal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>This is a Testmodal</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
     </div>
 </div>
 

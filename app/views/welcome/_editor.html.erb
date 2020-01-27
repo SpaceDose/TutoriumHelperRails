@@ -8,7 +8,6 @@
 <script>
 
     function closeTab (filename) {
-        console.log(filename)
         document.getElementById(filename + "-tab").remove()
         document.getElementById(filename + "").remove()
     }
@@ -55,8 +54,6 @@
         document.getElementById("nav-tabContent").appendChild(card);
 
         link.click()
-
-        console.log(filename)
 
         return filename
     }
