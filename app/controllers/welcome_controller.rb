@@ -5,10 +5,10 @@ class WelcomeController < ApplicationController
 
     @is_tutor = false
 
-    if params[:username] == "tutor"
+    if params[:username].downcase! == "tutor"
       @is_tutor = true
     end
-    
+
   end
 
   def new_file

@@ -7,7 +7,8 @@
 .wrapper {	
     padding-top:20%;
     height: 100%;
-	background-color: #242424;
+    background-color: #242424;
+    background-image: url(/assets/Background.svg)
 }
 
 .form-input{
@@ -222,4 +223,14 @@ a:hover {
 }
 .closeBtn > img {
     height: 15px;
+}
+
+// Modals
+.modal-content {
+    background-color: #242424 !important;
+    color: white;
+}
+
+span {
+    color: white;
 }
